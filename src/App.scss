@@ -1,3 +1,7 @@
+body{
+ font-family: 'Caveat', cursive; 
+ font-size: 1.5rem;
+}
 .App {
   text-align: center;
 }
@@ -35,4 +39,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+div {
+  text-align: center;
 }
