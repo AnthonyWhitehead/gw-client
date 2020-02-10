@@ -1,15 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.scss';
-import Poem from './components/Poem/Poem';
-import PoemCollection from './components/PoemCollection/PoemCollection';
+import PoemCollection from './components/poem-collection/PoemCollection';
+import Header from './components/header/Header';
+import SideBar from './components/side-bar/SideBar';
+import SideBarDetail from './components/side-bar-detail/SideBarDetail';
 
 const App = () => {
   return (
-    <Router>
-      <div>
-        {/* <nav>
+    <div className="layout-container">
+      <Router>
+        <Header />
+        <aside>
+          <SideBar />
+          <SideBarDetail />
+        </aside>
+        <main>
+          {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -23,16 +31,17 @@ const App = () => {
           </ul>
         </nav> */}
 
-        <Switch>
-          <Route path="/category/:cat">
-            <PoemCollection />
-          </Route>
-          <Route path="/poem/:title">
-            <PoemCollection />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+          <Switch>
+            <Route path="/category/:cat">
+              <PoemCollection />
+            </Route>
+            <Route path="/poem/:title">
+              <PoemCollection />
+            </Route>
+          </Switch>
+        </main>
+      </Router>
+    </div>
   );
 };
 

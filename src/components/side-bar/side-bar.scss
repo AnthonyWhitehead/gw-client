@@ -1,0 +1,27 @@
+@import '../../scss/colors.scss';
+
+.side-bar-container {
+    color: $white;
+    position: fixed;
+    top: 7vh;     
+    width: 7vw;
+    height: 93vh;
+    background: $secondary;
+}
+
+.side-bar-grid-container {
+    display: grid;
+    width: 100%;
+    grid-template-rows: 35vh auto;
+    justify-content: center;
+    ul {
+        display: grid;
+        align-content: space-evenly;
+        a {
+            color: $white;
+        }
+        .active {
+            text-decoration: underline;
+        }
+    }
+}
