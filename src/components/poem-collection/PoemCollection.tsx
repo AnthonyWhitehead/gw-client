@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setPoems } from '../../store/actions';
 import { setLoading } from '../../store/actions/status';
 
-import Poem from '../poem/Poem'; 
+import Poem from '../poo/Poem'; 
 
 const PoemCollection: React.FC = () => {
   const { cat, title } = useParams();
