@@ -3,9 +3,13 @@
     position: fixed;
     top: 7vh;
     left: 7vw;     
-    width: 20vw;
+    transition: width 2s;
     height: 93vh;
     background: $grey;
+}
+
+.open {
+   width: 20vw;
 }
 
 .side-bar-detail-grid-container{
