@@ -13,7 +13,7 @@ const SideBarDetail: React.FC = () => {
    const cat = poemCollection[0].category;
     category = cat.charAt(0).toUpperCase() + cat.substring(1);
     links = poemCollection.map((poem: any) => {
-      return <PoemLink title={poem.title} />;
+      return <PoemLink key={poem._id} title={poem.title} />;
     });
   }
 
