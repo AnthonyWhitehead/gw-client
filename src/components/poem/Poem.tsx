@@ -12,10 +12,15 @@ export interface IPoem {
 const Poem: React.FunctionComponent<IPoem> = props => {
   const title = poemTitle(props.poem.title);
 
+
+  const imgUrl = new File([], `/img/${props.poem.title}.jpg`);
+   
+  console.log(imgUrl)
+
   return (
     <div className="poem-container" id={props.poem.title}>
       <div>
-        <img src="/img/caddis-fly-larvae.png" alt="" />
+        <img src={`/img/${props.poem.title}.jpg`} alt={props.poem.title} />
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{ __html: props.poem.body }}></div>
       </div>
