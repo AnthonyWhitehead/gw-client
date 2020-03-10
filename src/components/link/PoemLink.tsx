@@ -1,5 +1,5 @@
 import React from 'react';
-import {poemTitle} from '../../utilities/utilities';
+import { poemTitle } from '../../utilities/utilities';
 
 interface IPoemLink {
   title: string;

@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.scss';
 import PoemCollection from './components/poem-collection/PoemCollection';
-import Header from './components/header/Header';
 import SideBar from './components/side-bar/SideBar';
 import SideBarDetail from './components/side-bar-detail/SideBarDetail';
 
@@ -11,7 +10,6 @@ const App = () => {
   return (
     <div className="layout-container">
       <Router>
-        <Header />
         <aside>
           <SideBar />
           <SideBarDetail />
