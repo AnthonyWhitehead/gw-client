@@ -12,11 +12,6 @@ export interface IPoem {
 const Poem: React.FunctionComponent<IPoem> = props => {
   const title = poemTitle(props.poem.title);
 
-
-  const imgUrl = new File([], `/img/${props.poem.title}.jpg`);
-   
-  console.log(imgUrl)
-
   return (
     <div className="poem-container" id={props.poem.title}>
       <div>

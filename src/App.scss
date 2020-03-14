@@ -22,14 +22,10 @@ ul {
 
 .layout-container {
   display: grid;
-  grid-template-columns: 10vw auto;
+  grid-template-columns: 20rem auto;
   position: relative;
-  aside {
-    grid-column: 1;
-  }
   main {
     grid-column: 2;
     justify-content: center;
-    padding: 2rem;
   }
 }

@@ -18,7 +18,7 @@ const SideBarDetail: React.FC = () => {
   }
 
   return (
-    <div className="side-bar-detail-container open">
+    <div className="side-bar-detail-container">
       <div className="side-bar-detail-grid-container">
         <h2>{category} poetry </h2>
         <ul>{links}</ul>

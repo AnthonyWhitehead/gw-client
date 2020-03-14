@@ -1,14 +1,11 @@
 .side-bar-detail-container {
-    color: $black;
     position: fixed;
-    left: 7vw;     
-    transition: width 2s;
+    top: 0;
+    left: 5rem;
+    color: $black;
+    width: 15rem;
     height: 100vh;
     background: $grey;
-}
-
-.open {
-   width: 20vw;
 }
 
 .side-bar-detail-grid-container{

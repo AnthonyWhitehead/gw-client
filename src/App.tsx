@@ -5,30 +5,16 @@ import './App.scss';
 import PoemCollection from './components/poem-collection/PoemCollection';
 import SideBar from './components/side-bar/SideBar';
 import SideBarDetail from './components/side-bar-detail/SideBarDetail';
+import { useSelector } from 'react-redux';
 
-const App = () => {
+const App: React.FC = () => {
+  const poemCollection = useSelector((state: any) => state.poems);
   return (
     <div className="layout-container">
       <Router>
-        <aside>
-          <SideBar />
-          <SideBarDetail />
-        </aside>
+        <SideBar />
+        {poemCollection !== undefined && poemCollection.length > 0 ? <SideBarDetail /> : ''}
         <main>
-          {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav> */}
-
           <Switch>
             <Route path="/category/:cat">
               <PoemCollection />
