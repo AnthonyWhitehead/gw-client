@@ -31,7 +31,7 @@ const SideBar: React.FC = () => {
       });
   });
 
-  const mapLinks = () => {
+  const mappedLinks = () => {
     return baseLinks.current.map(link => {
       return (
         <li>
@@ -46,7 +46,7 @@ const SideBar: React.FC = () => {
   return (
     <div className="side-bar-container">
       <div className="side-bar-grid-container">
-        <ul>{mapLinks()}</ul>
+        <ul>{mappedLinks()}</ul>
       </div>
     </div>
   );
