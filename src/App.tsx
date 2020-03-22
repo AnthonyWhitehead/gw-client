@@ -13,15 +13,16 @@ const App: React.FC = () => {
     <div className="layout-container">
       <Router>
         <SideBar />
-        {poemCollection !== undefined && poemCollection.length > 0 ? <SideBarDetail /> : ''}
+        <SideBarDetail /> 
         <main>
           <Switch>
+             <Route path="/category/:cat/:title">
+              here
+            </Route>
             <Route path="/category/:cat">
               <PoemCollection />
             </Route>
-            <Route path="/poem/:title">
-              <PoemCollection />
-            </Route>
+           
           </Switch>
         </main>
       </Router>

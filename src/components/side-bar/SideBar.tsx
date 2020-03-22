@@ -1,47 +1,52 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setSelectedCat } from '../../store/actions/cat';
+import { setLoading } from '../../store/actions/status';
+import { icons } from './icons';
 
 const SideBar: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const linkUrl = '/poems/category-links';
+  const baseLinks = useRef([]);
+
+  const handleCategorySelection = (cat: string) => {
+    dispatch(setSelectedCat(cat));
+  };
+
+  useEffect(() => {
+    dispatch(setLoading());
+    fetch(linkUrl)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then(res => {
+        baseLinks.current = res;
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  });
+
+  const mapLinks = () => {
+    return baseLinks.current.map(link => {
+      return (
+        <li>
+          <Link key={link} to={`/category/${link}`} onClick={() => handleCategorySelection(link)}>
+            <i className={icons[link]}></i>
+          </Link>
+        </li>
+      );
+    });
+  };
+
   return (
     <div className="side-bar-container">
       <div className="side-bar-grid-container">
-        <ul>
-          <li className="active">
-            <Link to="/category/war">
-              <i className="fas fa-peace"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/family">
-              <i className="fas fa-users"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/nature">
-              <i className="fab fa-pagelines"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/science">
-              <i className="fas fa-microscope"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/travel">
-              <i className="fas fa-globe-europe"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/children">
-              <i className="fas fa-child"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/general">
-              <i className="fas fa-book"></i>
-            </Link>
-          </li>
-        </ul>
+        <ul>{mapLinks()}</ul>
       </div>
     </div>
   );
