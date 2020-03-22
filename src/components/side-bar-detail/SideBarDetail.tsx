@@ -10,10 +10,10 @@ const SideBarDetail: React.FC = () => {
   let category;
 
   if (Object.entries(poemCollection).length > 0) {
-   const cat = poemCollection[0].category;
+    const cat = poemCollection[0].category;
     category = cat.charAt(0).toUpperCase() + cat.substring(1);
     links = poemCollection.map((poem: any) => {
-      return <PoemLink key={poem._id} title={poem.title} />;
+      return <PoemLink key={poem._id} cat={poem.category} title={poem.title} />;
     });
   }
 
