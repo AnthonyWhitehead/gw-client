@@ -8,7 +8,6 @@ interface IPoemLink {
 }
 
 const PoemLink: React.FC<IPoemLink> = props => {
-  console.log(props);
   const link = `/category/${props.cat}/${props.title}`;
   const title = poemTitle(props.title);
 
