@@ -1,47 +1,70 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedCat } from '../../store/actions/cat';
+import { setLoading } from '../../store/actions/status';
+import { icons } from './icons';
+import { setPoems } from '../../store/actions';
 
 const SideBar: React.FC = () => {
+  const dispatch = useDispatch();
+  const loading = useSelector((state: any) => state.loading);
+
+  const linkUrl = '/poems/category-links';
+  const baseLinks = useRef([]);
+  const url = 'poems/category/';
+
+  const handleCategorySelection = (cat: string) => {
+    dispatch(setSelectedCat(cat));
+    dispatch(setLoading());
+    fetch(`/${url}${cat}`)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then(res => {
+        dispatch(setPoems(res));
+      })
+      .then(() => dispatch(setLoading()))
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
+  useEffect(() => {
+    dispatch(setLoading());
+    fetch(linkUrl)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then(res => {
+        baseLinks.current = res;
+      })
+      .then(() => dispatch(setLoading()))
+      .catch(e => {
+        console.log(e);
+      });
+  }, [dispatch, linkUrl]);
+
+  const mappedLinks = () => {
+    return baseLinks.current.map(link => {
+      return (
+        <li key={link}>
+          <Link to={`/category/${link}`} onClick={() => handleCategorySelection(link)}>
+            <i className={icons[link]}></i>
+          </Link>
+        </li>
+      );
+    });
+  };
+
   return (
     <div className="side-bar-container">
       <div className="side-bar-grid-container">
-        <ul>
-          <li className="active">
-            <Link to="/category/war">
-              <i className="fas fa-peace"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/family">
-              <i className="fas fa-users"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/nature">
-              <i className="fab fa-pagelines"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/science">
-              <i className="fas fa-microscope"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/travel">
-              <i className="fas fa-globe-europe"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/children">
-              <i className="fas fa-child"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/category/general">
-              <i className="fas fa-book"></i>
-            </Link>
-          </li>
-        </ul>
+        <ul>{!loading && mappedLinks()}</ul>
       </div>
     </div>
   );

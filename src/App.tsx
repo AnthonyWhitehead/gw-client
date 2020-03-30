@@ -2,24 +2,25 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.scss';
+
 import PoemCollection from './components/poem-collection/PoemCollection';
 import SideBar from './components/side-bar/SideBar';
 import SideBarDetail from './components/side-bar-detail/SideBarDetail';
-import { useSelector } from 'react-redux';
+import SinglePoem from './components/single-poem/SinglePoem';
 
 const App: React.FC = () => {
-  const poemCollection = useSelector((state: any) => state.poems);
+
   return (
     <div className="layout-container">
       <Router>
         <SideBar />
-        {poemCollection !== undefined && poemCollection.length > 0 ? <SideBarDetail /> : ''}
+        <SideBarDetail />
         <main>
           <Switch>
-            <Route path="/category/:cat">
-              <PoemCollection />
+            <Route exact path="/category/:cat/:title">
+            <SinglePoem></SinglePoem> 
             </Route>
-            <Route path="/poem/:title">
+            <Route exact path="/category/:cat">
               <PoemCollection />
             </Route>
           </Switch>

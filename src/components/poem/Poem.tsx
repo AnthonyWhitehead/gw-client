@@ -3,6 +3,7 @@ import { poemTitle } from '../../utilities/utilities';
 
 export interface IPoem {
   poem: {
+    _id: string;
     title: string;
     category: string;
     body: string;
@@ -10,6 +11,7 @@ export interface IPoem {
 }
 
 const Poem: React.FunctionComponent<IPoem> = props => {
+
   const title = poemTitle(props.poem.title);
 
   return (
