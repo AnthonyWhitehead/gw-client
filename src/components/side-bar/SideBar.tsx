@@ -52,7 +52,7 @@ const SideBar: React.FC = () => {
   const mappedLinks = () => {
     return baseLinks.current.map(link => {
       return (
-        <li key={link}>
+        <li key={link} title={link}>
           <Link to={`/category/${link}`} onClick={() => handleCategorySelection(link)}>
             <i className={icons[link]}></i>
           </Link>
