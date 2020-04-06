@@ -2,6 +2,7 @@
 @import './components/poem/poem.scss';
 @import './components/side-bar/side-bar.scss';
 @import './components/side-bar-detail//side-bar-detail.scss';
+@import './components/errors/notFound.scss';
 
 // base styling
 body {
@@ -23,6 +24,7 @@ ul {
 .layout-container {
   display: grid;
   grid-template-columns: 20rem auto;
+  grid-template-rows: 100vh;
   position: relative;
   main {
     grid-column: 2;
