@@ -7,6 +7,7 @@ import PoemCollection from './components/poem-collection/PoemCollection';
 import SideBar from './components/side-bar/SideBar';
 import SideBarDetail from './components/side-bar-detail/SideBarDetail';
 import SinglePoem from './components/single-poem/SinglePoem';
+import NotFound from './components/errors/NotFound';
 
 const App: React.FC = () => {
 
@@ -22,6 +23,9 @@ const App: React.FC = () => {
             </Route>
             <Route exact path="/category/:cat">
               <PoemCollection />
+            </Route>
+            <Route path="*">
+              <NotFound />
             </Route>
           </Switch>
         </main>
