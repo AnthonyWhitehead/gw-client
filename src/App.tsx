@@ -25,7 +25,7 @@ const App: React.FC = () => {
               <PoemCollection />
             </Route>
             <Route path="*">
-              <NotFound></NotFound>
+              <NotFound />
             </Route>
           </Switch>
         </main>
