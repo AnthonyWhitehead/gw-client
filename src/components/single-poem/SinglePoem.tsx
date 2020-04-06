@@ -3,7 +3,6 @@ import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Poem from '../poem/Poem';
-import { IPoem } from '../poem/interfaces';
 import { setLoading } from '../../store/actions/status';
 
 const SinglePoem: React.FC = () => {
